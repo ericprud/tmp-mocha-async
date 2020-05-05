@@ -26,7 +26,7 @@ a initialized
 a inline end 400 T+705
 a inline.then
 ```
-This shows that the a inline stuff happens too late.
+This shows that the a inline stuff happens too late. Ideally, the `a inline` stuff would fire before the tests.
 
 If I uncomment the `before()` in
 ``` js
