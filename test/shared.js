@@ -14,12 +14,12 @@ const ret = {
 }
 
 function init (merge, f) {
-  init.initialized = init.initialized || ret.wait('init', 1000, 0)
+  init.initialized = init.initialized || ret.wait('init', 300, 1)
   before(() => init.initialized.then(i => {
     Object.assign(ret, merge);
     return i+1
-  }))
-  return init.initialized.then(f)
+  }).then(f))
+  return init.initialized
 }
 
 module.exports = ret;
