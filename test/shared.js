@@ -17,8 +17,11 @@ function init (merge, f) {
   init.initialized = init.initialized || ret.wait('init', 300, 1)
   before(() => init.initialized.then(i => {
     Object.assign(ret, merge);
-    return i+1
-  }).then(f))
+    // return i+1
+    return f ? f(i+1) : i+1
+  })
+         // .then(f)
+        )
   return init.initialized
 }
 

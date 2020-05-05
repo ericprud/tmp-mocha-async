@@ -4,7 +4,7 @@ const expect = chai.expect
 chai.use(chaiAsPromised)
 const H = require('./shared')
 const p = H.init({a:1}, i =>
-                 H.wait('a', 200, 99).then(x =>
+                 H.wait('a', 400, 99).then(x =>
                    console.log(i, 'a initialized', H)
                  )
                 )
