@@ -1,15 +1,15 @@
-const chai = require('chai')
-const chaiAsPromised = require('chai-as-promised')
-const expect = chai.expect
-chai.use(chaiAsPromised)
+const expect = require('chai').expect
 const H = require('./shared')
-const p = H.init({b:2}, //i =>
-                 // H.wait('b', 100, 99).then(x =>
-                 //   console.log(i, 'b initialized', H)
-                 // )
-                )
+let p = H.init(
+  {b:2},
+).then(
+  () => H.wait('b init function', 100).then(
+    () => console.log('b post-init')
+  )
+)
 
-describe('b', () => {
+describe('describe b', () => {
+  // before(() => H.setup('b inline', 300).then(() => console.log('a inline.then')))
   it('should let 2 be 2', () => {
     expect(H.b).to.equal(2)
   })
