@@ -3,8 +3,8 @@ const chaiAsPromised = require('chai-as-promised')
 const expect = chai.expect
 chai.use(chaiAsPromised)
 const H = require('./shared')
-H.init({b:2})
-before(() => H.init.initialized.then(
+const p = H.init({b:2})
+before(() => p.then(
   i =>
     console.log(i, 'b initialized', H)
 ))
