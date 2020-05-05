@@ -64,3 +64,30 @@ a inline.then
 
   2 passing (804ms)
 ```
+Even sticking `a`'s inline code in a `before()` leaves `a` fired too late:
+```
+init start 300 T+0
+
+
+init end 300 T+302
+b init function start 100 T+303
+a init function start 200 T+303
+b init function end 100 T+404
+b post-init
+a init function end 200 T+503
+a initialized
+  describe a
+a inline start 400 T+507
+a inline end 400 T+907
+a inline.then
+    ✓ should let 1 be 1
+
+  describe b
+b inline start 300 T+913
+b inline end 300 T+1214
+a inline.then
+    ✓ should let 2 be 2
+
+
+  2 passing (1s)
+```
